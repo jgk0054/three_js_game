@@ -1,17 +1,22 @@
 const component = require('./Component');
-
+const trans = require('../components/transform');
 class gameObject {
-    constructor(){
+    constructor(startPOS){
         this.components = [];
         this.name='';
         this.id=Math.random();
+        this.transform = new trans(startPOS);
         init();
     }
 
     init(){
-        
-    }
-    update(){
 
+    }
+
+    update(){
+        //Always update all the components.
+        for(component in this.components){
+            component.update();
+        }
     }
 }
